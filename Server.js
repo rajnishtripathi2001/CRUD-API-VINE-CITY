@@ -1,8 +1,9 @@
+require('dotenv').config();
 const { json } = require("express");
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser")
-require('dotenv').config()
+const bodyParser = require("body-parser");
+const User = require('./Model/User')
 
 const app = express();
 
@@ -14,17 +15,6 @@ mongoose.connect(process.env.DATABASE_URL)
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json());
-
-const userSchema = new mongoose.Schema({
-    name:String,
-    email:String,
-    origin:String,
-    category:String,
-    VID:String,  //Vinish ID
-    ResID:String, //Resident ID
-})
-
-const User = new mongoose.model("User",userSchema);
 
 // Create User
 
