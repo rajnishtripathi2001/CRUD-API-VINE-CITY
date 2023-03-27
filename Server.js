@@ -7,6 +7,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const User = require('./Model/User')
 
+const PORT = process.env.PORT || 5000
+
+
 
 // Declaring Express App
 const app = express();
@@ -89,6 +92,6 @@ app.delete("/vc/user/:id",async(req,res)=>{
 
 
 
-app.listen(5000,()=>{
+app.listen(PORT,()=>{
     console.log("Server is working at http://localhost:5000");
 })
