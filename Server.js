@@ -25,9 +25,13 @@ app.use(express.json());
 
 //--------- User Management API -----------------
 
+app.get("/",(req,res)=>{
+    res.sendFile(__dirname+"/"+"index.html")
+})
+
 // Create User
 
-app.post("/vc/user/new",async(req,res)=>{       //create
+app.post("/vc/user/new",async(req,res)=>{
     const user = await User.create(req.body)
     res.status(201).json({
         success:true,
@@ -60,7 +64,6 @@ app.put("/vc/user/:id",async(req,res)=>{
     
 })
 
-
 // Delete User
 
 app.delete("/vc/user/:id",async(req,res)=>{
@@ -82,6 +85,9 @@ app.delete("/vc/user/:id",async(req,res)=>{
     })
     
 })
+
+
+
 
 app.listen(5000,()=>{
     console.log("Server is working at http://localhost:5000");
