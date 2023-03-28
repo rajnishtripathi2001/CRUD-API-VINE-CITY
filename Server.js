@@ -36,7 +36,7 @@ app.get("/",(req,res)=>{
 
 // Create User
 
-app.post("/vc/user/new",async(req,res)=>{
+app.post(process.env.USER_CREATE_URL ,async(req,res)=>{
     const user = await User.create(req.body)
     res.status(201).json({
         success:true,
@@ -46,7 +46,7 @@ app.post("/vc/user/new",async(req,res)=>{
 
 // Read User
 
-app.get("/vc/user/",async(req,res)=>{
+app.get(process.env.USER_READ_URL ,async(req,res)=>{
     const users = await User.find()
     res.status(200).json({
         success:true,
@@ -56,7 +56,7 @@ app.get("/vc/user/",async(req,res)=>{
 
 //update user
 
-app.put("/vc/user/:id",async(req,res)=>{
+app.put(process.env.USER_UPDATE_AND_DELETE_URL ,async(req,res)=>{
 
     let user = await User.findById(req.params.id)
 
@@ -71,7 +71,7 @@ app.put("/vc/user/:id",async(req,res)=>{
 
 // Delete User
 
-app.delete("/vc/user/:id",async(req,res)=>{
+app.delete(process.env.USER_UPDATE_AND_DELETE_URL ,async(req,res)=>{
 
     let user = await User.findByIdAndRemove(req.params.id)
 
