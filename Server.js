@@ -1,11 +1,13 @@
 //--- Importing all required modules ----
 
-const DATABASE_URL = require('./Config/DB.config');
+// const DATABASE_URL = require('./Config/DB.config');
 const { json } = require("express");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const User = require('./Model/User')
+
+require('dotenv').config()
 
 const PORT = process.env.PORT || 5000
 
@@ -17,7 +19,7 @@ const app = express();
 
 // Connecting Database
 
-mongoose.connect(DATABASE_URL.url)
+mongoose.connect(process.env.MONGO_URL)
 .then(console.log("Connected to DB"))
 .catch((err)=>{
     console.log(err)
